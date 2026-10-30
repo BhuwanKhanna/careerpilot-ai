@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Career Accelerator</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            Career<span>AI</span>
+        </div>
+
+        <nav>
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#features">
+                Features
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
+
+        <a
+            href="#resume"
+            class="nav-button"
+        >
+            Get Started
+        </a>
+
+    </header>
+
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section
+        class="hero"
+        id="home"
+    >
+
+        <div class="hero-content">
+
+            <p class="small-heading">
+                AI-POWERED CAREER ASSISTANT
+            </p>
+
+            <h1>
+                Build your career<br>
+                with confidence.
+            </h1>
+
+            <p class="hero-text">
+
+                AI Career Accelerator helps students improve
+                their resumes, create professional profiles,
+                prepare for interviews and take the next step
+                in their careers.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#resume"
+                    class="primary-button"
+                >
+                    Analyze Resume
+                </a>
+
+                <a
+                    href="#about"
+                    class="secondary-button"
+                >
+                    Learn More
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="hero-card">
+
+            <div class="card-top">
+
+                <span>
+                    Career Progress
+                </span>
+
+                <span class="percentage">
+                    78%
+                </span>
+
+            </div>
+
+
+            <div class="progress-bar">
+
+                <div class="progress"></div>
+
+            </div>
+
+
+            <div class="card-item">
+
+                <div class="check">
+                    ✓
+                </div>
+
+                <div>
+
+                    <strong>
+                        Resume Analysis
+                    </strong>
+
+                    <p>
+                        Ready for review
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card-item">
+
+                <div class="check">
+                    ✓
+                </div>
+
+                <div>
+
+                    <strong>
+                        LinkedIn Profile
+                    </strong>
+
+                    <p>
+                        Profile improvements available
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card-item">
+
+                <div class="number">
+                    3
+                </div>
+
+                <div>
+
+                    <strong>
+                        Interview Questions
+                    </strong>
+
+                    <p>
+                        Practice questions generated
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section
+        class="about section"
+        id="about"
+    >
+
+        <div class="section-label">
+            ABOUT THE PROJECT
+        </div>
+
+        <h2>
+
+            Everything students need<br>
+            to prepare for their careers.
+
+        </h2>
+
+        <p class="section-description">
+
+            Starting a career can be confusing.
+            Students often have to work on their resume,
+            LinkedIn profile, cover letters and interview
+            preparation separately.
+
+        </p>
+
+        <p class="section-description">
+
+            AI Career Accelerator brings these tasks
+            together in one simple platform and provides
+            useful suggestions based on the student's
+            resume and career goals.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         RESUME UPLOAD
+    ========================== -->
+
+    <section
+        class="upload-section"
+        id="resume"
+    >
+
+        <div class="section-label">
+            RESUME ANALYSIS
+        </div>
+
+
+        <h2>
+            Start with your resume.
+        </h2>
+
+
+        <p class="upload-description">
+
+            Upload your resume in PDF or DOCX format.
+            We'll use it as the starting point for your
+            career analysis.
+
+        </p>
+
+
+
+        <div class="upload-box">
+
+            <div class="upload-icon">
+                ↑
+            </div>
+
+
+            <h3>
+                Upload your resume
+            </h3>
+
+
+            <p>
+                PDF or DOCX files only
+            </p>
+
+
+            <input
+                type="file"
+                id="resumeFile"
+                accept=".pdf,.docx"
+            >
+
+
+            <button
+                type="button"
+                class="primary-button"
+                onclick="uploadResume()"
+            >
+                Analyze Resume
+            </button>
+
+
+            <p id="uploadStatus"></p>
+
+        </div>
+
+
+
+        <!-- =========================
+             RESULTS
+        ========================== -->
+
+        <div
+            id="results"
+            class="results-container"
+            style="display: none;"
+        >
+
+
+            <!-- ATS RESULT -->
+
+            <div class="result-card">
+
+                <p class="result-label">
+                    ATS SCORE
+                </p>
+
+
+                <div
+                    id="atsScore"
+                    class="ats-score"
+                >
+                    0/100
+                </div>
+
+
+                <h3>
+                    Suggestions
+                </h3>
+
+
+                <ul id="atsIssues">
+                </ul>
+
+            </div>
+
+
+
+            <!-- LINKEDIN RESULT -->
+
+            <div
+                class="result-card linkedin-result"
+            >
+
+                <p class="result-label">
+                    LINKEDIN ABOUT
+                </p>
+
+
+                <h3>
+                    Your professional summary
+                </h3>
+
+
+                <p id="linkedinSummary">
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FEATURES
+    ========================== -->
+
+    <section
+        class="features section"
+        id="features"
+    >
+
+        <div class="section-label">
+            FEATURES
+        </div>
+
+
+        <h2>
+            One platform. Multiple career tools.
+        </h2>
+
+
+        <div class="feature-grid">
+
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    01
+                </div>
+
+                <h3>
+                    Resume Analysis
+                </h3>
+
+                <p>
+
+                    Upload your resume and receive
+                    suggestions to improve its content
+                    and presentation.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    02
+                </div>
+
+                <h3>
+                    LinkedIn Profile
+                </h3>
+
+                <p>
+
+                    Generate professional profile content
+                    that helps you present yourself better
+                    online.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    03
+                </div>
+
+                <h3>
+                    Cover Letter
+                </h3>
+
+                <p>
+
+                    Create a clear and personalized
+                    cover letter for the job or internship
+                    you are applying for.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    04
+                </div>
+
+                <h3>
+                    Interview Preparation
+                </h3>
+
+                <p>
+
+                    Get interview questions and practice
+                    answering questions related to your
+                    career goals.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    05
+                </div>
+
+                <h3>
+                    Career PDF Kit
+                </h3>
+
+                <p>
+
+                    Keep your important career documents
+                    and generated resources together in
+                    one place.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    06
+                </div>
+
+                <h3>
+                    AI Suggestions
+                </h3>
+
+                <p>
+
+                    Get practical suggestions based on
+                    your resume and the career direction
+                    you choose.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         HOW IT WORKS
+    ========================== -->
+
+    <section class="process section">
+
+        <div class="section-label">
+            HOW IT WORKS
+        </div>
+
+
+        <h2>
+            Simple from start to finish.
+        </h2>
+
+
+        <div class="steps">
+
+
+            <div class="step">
+
+                <span>
+                    1
+                </span>
+
+                <div>
+
+                    <h3>
+                        Upload Resume
+                    </h3>
+
+                    <p>
+                        Provide your existing resume.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="step">
+
+                <span>
+                    2
+                </span>
+
+                <div>
+
+                    <h3>
+                        Get Analysis
+                    </h3>
+
+                    <p>
+                        AI identifies areas that can be improved.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="step">
+
+                <span>
+                    3
+                </span>
+
+                <div>
+
+                    <h3>
+                        Build Your Profile
+                    </h3>
+
+                    <p>
+
+                        Create career documents and prepare
+                        for interviews.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section
+        class="contact section"
+        id="contact"
+    >
+
+        <div class="contact-box">
+
+            <div>
+
+                <div class="section-label">
+                    GET IN TOUCH
+                </div>
+
+                <h2>
+                    Have a question?
+                </h2>
+
+                <p>
+
+                    We would love to hear your feedback
+                    about AI Career Accelerator.
+
+                </p>
+
+            </div>
+
+
+            <a
+                href="mailto:contact@example.com"
+                class="primary-button"
+            >
+                Contact Us
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-logo">
+            Career<span>AI</span>
+        </div>
+
+
+        <p>
+            AI Career Accelerator for Students
+        </p>
+
+
+        <p class="copyright">
+            © 2026 AI Career Accelerator. Student Project.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        async function uploadResume() {
+
+            const fileInput =
+                document.getElementById("resumeFile");
+
+            const status =
+                document.getElementById("uploadStatus");
+
+            const results =
+                document.getElementById("results");
+
+
+            /*
+             * Check whether a file was selected
+             */
+
+            if (!fileInput.files.length) {
+
+                status.textContent =
+                    "Please select your resume first.";
+
+                return;
+
+            }
+
+
+            const file =
+                fileInput.files[0];
+
+
+            /*
+             * Check file type
+             */
+
+            const allowedExtensions =
+                [".pdf", ".docx"];
+
+            const extension =
+                file.name
+                    .substring(
+                        file.name.lastIndexOf(".")
+                    )
+                    .toLowerCase();
+
+
+            if (!allowedExtensions.includes(extension)) {
+
+                status.textContent =
+                    "Please upload a PDF or DOCX file.";
+
+                return;
+
+            }
+
+
+            /*
+             * Prepare file for backend
+             */
+
+            const formData =
+                new FormData();
+
+            formData.append(
+                "file",
+                file
+            );
+
+
+            /*
+             * Show loading message
+             */
+
+            status.textContent =
+                "Analyzing your resume...";
+
+
+            try {
+
+                /*
+                 * Send resume to FastAPI
+                 */
+
+                const response =
+                    await fetch(
+                        "http://127.0.0.1:8000/upload-resume",
+                        {
+                            method: "POST",
+                            body: formData
+                        }
+                    );
+
+
+                /*
+                 * Convert backend response to JSON
+                 */
+
+                const data =
+                    await response.json();
+
+
+                /*
+                 * Handle backend error
+                 */
+
+                if (
+                    !response.ok ||
+                    !data.success
+                ) {
+
+                    status.textContent =
+                        data.message ||
+                        "Something went wrong.";
+
+                    return;
+
+                }
+
+
+                /*
+                 * Successful upload
+                 */
+
+                status.textContent =
+                    "✓ Resume analyzed successfully";
+
+
+                /*
+                 * Show results
+                 */
+
+                results.style.display =
+                    "grid";
+
+
+                /*
+                 * Display ATS score
+                 */
+
+                document.getElementById(
+                    "atsScore"
+                ).textContent =
+                    data.ats.score + "/100";
+
+
+                /*
+                 * Display ATS suggestions
+                 */
+
+                const issues =
+                    document.getElementById(
+                        "atsIssues"
+                    );
+
+                issues.innerHTML = "";
+
+
+                if (
+                    data.ats.issues &&
+                    data.ats.issues.length > 0
+                ) {
+
+                    data.ats.issues.forEach(
+                        function(issue) {
+
+                            const li =
+                                document.createElement(
+                                    "li"
+                                );
+
+                            li.textContent =
+                                issue;
+
+                            issues.appendChild(
+                                li
+                            );
+
+                        }
+                    );
+
+                } else {
+
+                    const li =
+                        document.createElement(
+                            "li"
+                        );
+
+                    li.textContent =
+                        "No major issues detected.";
+
+                    issues.appendChild(
+                        li
+                    );
+
+                }
+
+
+                /*
+                 * Display LinkedIn About section
+                 */
+
+                document.getElementById(
+                    "linkedinSummary"
+                ).textContent =
+                    data.linkedin_summary;
+
+
+                /*
+                 * Scroll to results
+                 */
+
+                results.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+
+            } catch (error) {
+
+                console.error(
+                    "Upload error:",
+                    error
+                );
+
+
+                status.textContent =
+                    "Could not connect to the backend. " +
+                    "Make sure FastAPI is running.";
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
